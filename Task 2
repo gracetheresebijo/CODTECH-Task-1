@@ -1,0 +1,98 @@
+class LibraryItem:
+    def __init__(self, title, author, category):
+        self.title = title
+        self.author = author
+        self.category = category
+        self.checked_out = False
+        self.due_date = None
+    
+    def checkout(self):
+        if not self.checked_out:
+            self.checked_out = True
+            self.due_date = "14 days from today"  # Example due date
+            print(f"{self.title} has been checked out.")
+        else:
+            print(f"{self.title} is already checked out.")
+    
+    def return_item(self):
+        if self.checked_out:
+            self.checked_out = False
+            self.due_date = None
+            print(f"{self.title} has been returned.")
+        else:
+            print(f"{self.title} is not checked out.")
+    
+    def __str__(self):
+        return f"{self.title} by {self.author} ({self.category})"
+
+
+class Library:
+    def __init__(self):
+        self.catalog = []
+
+    def add_item(self, item):
+        self.catalog.append(item)
+        print(f"{item.title} has been added to the library.")
+
+    def search_by_title(self, title):
+        found_items = [item for item in self.catalog if title.lower() in item.title.lower()]
+        self.display_search_results(found_items)
+
+    def search_by_author(self, author):
+        found_items = [item for item in self.catalog if author.lower() in item.author.lower()]
+        self.display_search_results(found_items)
+
+    def search_by_category(self, category):
+        found_items = [item for item in self.catalog if category.lower() in item.category.lower()]
+        self.display_search_results(found_items)
+
+    def display_search_results(self, results):
+        if results:
+            print("\nSearch Results:")
+            for item in results:
+                print(item)
+        else:
+            print("No items found.")
+
+    def display_catalog(self):
+        if self.catalog:
+            print("\nLibrary Catalog:")
+            for item in self.catalog:
+                print(item)
+        else:
+            print("The library catalog is empty.")
+
+
+def main():
+    library = Library()
+
+    # Adding sample items to the library
+    book1 = LibraryItem("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "Fantasy")
+    book2 = LibraryItem("To Kill a Mockingbird", "Harper Lee", "Fiction")
+    magazine1 = LibraryItem("National Geographic", "Various", "Magazine")
+    dvd1 = LibraryItem("The Avengers", "Marvel Studios", "DVD")
+
+    library.add_item(book1)
+    library.add_item(book2)
+    library.add_item(magazine1)
+    library.add_item(dvd1)
+
+    # Example searches
+    print("\nExample searches:")
+    library.search_by_title("Harry Potter")
+    library.search_by_author("Harper Lee")
+    library.search_by_category("DVD")
+
+    # Example checkout and return
+    print("\nExample checkout and return:")
+    book1.checkout()
+    book1.return_item()
+    book2.checkout()
+    book2.checkout()
+
+    # Display updated catalog
+    library.display_catalog()
+
+
+if __name__ == "__main__":
+    main()
