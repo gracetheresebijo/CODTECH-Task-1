@@ -35,3 +35,21 @@ Insights into how functions can simplify code, promote code reuse, and improve r
 Insight into the importance of input validation to prevent errors and ensure the program behaves as intended.
 
 
+
+PROJECT:LIBRARY MANAGEMENT SYSTEM
+
+OBJECTIVE
+The objective of developing a Python program to manage library resources such as books, magazines, and DVDs is to create a functional and efficient system that facilitates the organization, tracking, and retrieval of library items. 
+
+
+Maintain a structured catalog of library items (books, magazines, DVDs) with essential details such as title, author, and category.
+Provide functionalities for users to search for library items by title, author, or category.
+
+
+KEY ACTIVITIES
+Adding New Items to the Library
+Searching for Items
+Checking Out and Returning Items
+Managing Overdue Fines
+Displaying Library Catalog
+
